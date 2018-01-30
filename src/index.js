@@ -7,7 +7,7 @@ mapboxgl.accessToken = "pk.eyJ1Ijoic253b290ZW4iLCJhIjoiY2pkMXVvY2d6MWhqMjMzbzQwZ
 const map = new mapboxgl.Map({
   container: "map",
   center: [17.100, 48.148], //Bratislava, Slovakia
-  zoom: 12, // starting zoom
+  zoom: 13, // starting zoom
   style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
 
@@ -17,7 +17,15 @@ markerDomEl.style.height = "39px";
 markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
 
 new mapboxgl.Marker(markerDomEl).setLngLat([17.1077, 48.1486]).addTo(map);
-//new mapboxgl.Marker(markerDomEl).setLngLat([17.172999308, 49.159832694]).addTo(map);
 
-const marker = buildMarker([16.172999308, 49.159832694], 'hotel');
+
+const marker = buildMarker([17.117932, 48.1447069], 'hotel');
 marker.addTo(map);
+
+const ActMarker = buildMarker([17.1131, 48.1402], 'activity');
+
+ActMarker.addTo(map)
+
+const RestMarker = buildMarker([17.1082,48.1475], 'restaurant')
+
+RestMarker.addTo(map)

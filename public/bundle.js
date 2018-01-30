@@ -60,40 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-console.log('i am running correctly');
-const mapboxgl = __webpack_require__(1);
-const buildMarker = __webpack_require__(2)
-
-mapboxgl.accessToken = "pk.eyJ1Ijoic253b290ZW4iLCJhIjoiY2pkMXVvY2d6MWhqMjMzbzQwZWNqbWJyNiJ9.kUYt_xOxJSW-n4ZxjFckmA"
-
-const map = new mapboxgl.Map({
-  container: "map",
-  center: [17.100, 48.148], //Bratislava, Slovakia
-  zoom: 12, // starting zoom
-  style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
-});
-
-const markerDomEl = document.createElement("div");
-markerDomEl.style.width = "32px";
-markerDomEl.style.height = "39px";
-markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
-
-new mapboxgl.Marker(markerDomEl).setLngLat([17.1077, 48.1486]).addTo(map);
-//new mapboxgl.Marker(markerDomEl).setLngLat([17.172999308, 49.159832694]).addTo(map);
-
-const marker = buildMarker([16.172999308, 49.159832694], 'hotel');
-marker.addTo(map);
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;(function(f){if(true){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.mapboxgl = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return require(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
@@ -664,42 +635,88 @@ module.exports={"$version":8,"$root":{"version":{"required":true,"type":"enum","
 //# sourceMappingURL=mapbox-gl.js.map
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+console.log('i am running correctly');
+const mapboxgl = __webpack_require__(0);
+const buildMarker = __webpack_require__(2)
+
+mapboxgl.accessToken = "pk.eyJ1Ijoic253b290ZW4iLCJhIjoiY2pkMXVvY2d6MWhqMjMzbzQwZWNqbWJyNiJ9.kUYt_xOxJSW-n4ZxjFckmA"
+
+const map = new mapboxgl.Map({
+  container: "map",
+  center: [17.100, 48.148], //Bratislava, Slovakia
+  zoom: 13, // starting zoom
+  style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
+});
+
+const markerDomEl = document.createElement("div");
+markerDomEl.style.width = "32px";
+markerDomEl.style.height = "39px";
+markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+
+new mapboxgl.Marker(markerDomEl).setLngLat([17.1077, 48.1486]).addTo(map);
+
+
+const marker = buildMarker([17.117932, 48.1447069], 'hotel');
+marker.addTo(map);
+
+const ActMarker = buildMarker([17.1131, 48.1402], 'activity');
+
+ActMarker.addTo(map)
+
+const RestMarker = buildMarker([17.1082,48.1475], 'restaurant')
+
+RestMarker.addTo(map)
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const mapboxgl = __webpack_require__(1);
+const mapboxgl = __webpack_require__(0);
 
 const iconURLs = {
     hotels: "http://i.imgur.com/D9574Cu.png",
     restaurants: "http://i.imgur.com/cqR6pUI.png",
     activities: "http://i.imgur.com/WbMOfMl.png"
 }
-const markerDomEl = document.createElement("div");
-markerDomEl.style.width = "32px";
-markerDomEl.style.height = "39px";
-markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+const markerHotel = document.createElement("div");
+markerHotel.style.width = "32px";
+markerHotel.style.height = "39px";
+markerHotel.style.backgroundImage = `url(${iconURLs.hotels})`;
 
-new mapboxgl.Marker(markerDomEl).setLngLat([17.1077, 48.1486])
+const markerRest = document.createElement("div");
+markerRest.style.width = "32px";
+markerRest.style.height = "39px";
+markerRest.style.backgroundImage = `url(${iconURLs.restaurants})`;
+
+const markerAct = document.createElement("div");
+markerAct.style.width = "32px";
+markerAct.style.height = "39px";
+markerAct.style.backgroundImage = `url(${iconURLs.activities})`;
+
 
 const buildMarker = function([long, lat], type) {
   console.log('you are making a marker')
   let markerParam;
   let lcType = type.toLowerCase()
-  // if (lcType === 'activity') {
-  //    markerParam = markerDomAct
-  // }
-  // else if (lcType === 'restaurant') {
-  //    markerParam = markerDomRest
-  // }
-  // else if (lcType === 'hotel') {
-  //  markerParam = markerDomHot
-  // } else {
-  //   alert(type + ' is not an option. Pick activity, restaurant, or hotel')
-  //}
-  return new mapboxgl.Marker(markerDomEl).setLngLat([long, lat])
+  if (lcType === 'activity') {
+     markerParam = markerAct;
+  }
+  else if (lcType === 'restaurant') {
+     markerParam = markerRest
+  }
+  else if (lcType === 'hotel') {
+   markerParam = markerHotel
+  } else {
+    alert(type + ' is not an option. Pick activity, restaurant, or hotel')
+  }
+  return new mapboxgl.Marker(markerParam).setLngLat([long, lat])
 }
 
-module.exports = buildMarker;
+module.exports = buildMarker
 
 
 /***/ })

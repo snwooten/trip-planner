@@ -12,3 +12,42 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+#options {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  background:rgba(121,134,203,.75);
+  border-radius: 25px;
+  padding-right: 15px;
+}
+
+ul{
+  list-style-type: none;
+}
+.subList{
+  color: red;
+  font-size: 14px;
+  list-style-type: disc;
+}
+
+header {
+  display: flex;
+  background-color: #283593;
+}
+
+nav {
+  margin: 1em;
+  display: inline-block;
+  font-family: Helvetica, sans-serif;
+  color: white;
+  align-self: center;
+  font-weight: bolder;
+}
+
+img {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  margin: 1em;
+}
