@@ -638,7 +638,7 @@ module.exports={"$version":8,"$root":{"version":{"required":true,"type":"enum","
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-console.log('i am running correctly');
+
 const mapboxgl = __webpack_require__(0);
 const buildMarker = __webpack_require__(2)
 
@@ -699,7 +699,6 @@ markerAct.style.backgroundImage = `url(${iconURLs.activities})`;
 
 
 const buildMarker = function([long, lat], type) {
-  console.log('you are making a marker')
   let markerParam;
   let lcType = type.toLowerCase()
   if (lcType === 'activity') {

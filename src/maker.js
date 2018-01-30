@@ -22,7 +22,6 @@ markerAct.style.backgroundImage = `url(${iconURLs.activities})`;
 
 
 const buildMarker = function([long, lat], type) {
-  console.log('you are making a marker')
   let markerParam;
   let lcType = type.toLowerCase()
   if (lcType === 'activity') {
